@@ -17,7 +17,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf ./lib/* && tsc",
     "postversion": "sh ./post-version.sh",
-    "release": "gh-release -n v1.0.0 -c master"
+    "release": "gh-release -n v1.0.0 -c master",
+    "prepare": "npm build"
   },
   "repository": {
     "type": "git",

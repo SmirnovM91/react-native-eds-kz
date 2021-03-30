@@ -7,4 +7,4 @@ git tag -d v$PACKAGE_VERSION
 # Add unstaged files and commit
 git add .
 git commit --amend --no-edit
-git tag $PACKAGE_VERSION
+git tag v$PACKAGE_VERSION

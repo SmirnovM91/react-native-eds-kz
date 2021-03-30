@@ -48,4 +48,3 @@ export const signPlainData = ({
     );
   });
 };
-export default Rnedskz;

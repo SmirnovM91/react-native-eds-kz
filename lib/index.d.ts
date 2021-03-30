@@ -1,4 +1,3 @@
-declare const Rnedskz: any;
 export interface IEDSResponse {
     certData: {
         commonName: string;
@@ -25,4 +24,3 @@ export declare const signPlainData: ({ path, password, data, }: {
     password: any;
     data: any;
 }) => Promise<IEDSResponse>;
-export default Rnedskz;
