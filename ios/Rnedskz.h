@@ -6,8 +6,7 @@
 //  Copyright © 2019 Facebook. All rights reserved.
 //
 
-#ifndef Rnedskz_h
-#define Rnedskz_h
+
 
 #import <React/RCTBridgeModule.h>
 
@@ -31,5 +30,3 @@
 -(void) initialize;
 - (NSString *)stringFromHexString:(NSString *)hexString;
 @end
-
-#endif /* Rnedskz_h */
