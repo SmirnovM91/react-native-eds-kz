@@ -6,13 +6,6 @@
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
   "homepage": "https://github.com/SmirnovM91/react-native-eds-kz",
-  "files": [
-    "README.md",
-    "android",
-    "src",
-    "ios",
-    "react-native-eds-kz.podspec"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf ./lib/* && tsc",
