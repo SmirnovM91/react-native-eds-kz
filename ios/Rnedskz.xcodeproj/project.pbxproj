@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2B5E60A9261356B80051348A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5E6056261356B70051348A /* libcrypto.a */; };
 		2B5E60AA261356B80051348A /* Base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B5E605A261356B70051348A /* Base64.c */; };
-		2B5E60AB261356B80051348A /* PKIECP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5E60A7261356B80051348A /* PKIECP.m */; };
 		2B5E60AC261356B80051348A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5E60A8261356B80051348A /* libssl.a */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRnedskz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRnedskz.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5E6056261356B70051348A /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		2B5E6057261356B70051348A /* PKIECP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKIECP.h; sourceTree = "<group>"; };
 		2B5E6059261356B70051348A /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		2B5E605A261356B70051348A /* Base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64.c; sourceTree = "<group>"; };
 		2B5E605C261356B70051348A /* pem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem2.h; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		2B5E60A4261356B80051348A /* ebcdic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ebcdic.h; sourceTree = "<group>"; };
 		2B5E60A5261356B80051348A /* idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idea.h; sourceTree = "<group>"; };
 		2B5E60A6261356B80051348A /* lhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhash.h; sourceTree = "<group>"; };
-		2B5E60A7261356B80051348A /* PKIECP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKIECP.m; sourceTree = "<group>"; };
 		2B5E60A8261356B80051348A /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		AC5CA6F0251E49D90082F112 /* Rnedskz.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rnedskz.m; sourceTree = "<group>"; };
 		AC96A15B251E6EDF00540DFE /* Rnedskz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rnedskz.h; sourceTree = "<group>"; };
@@ -133,16 +130,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2B5E6055261356B70051348A /* PKIECP */ = {
+		2B5E6055261356B70051348A /* libs */ = {
 			isa = PBXGroup;
 			children = (
 				2B5E6056261356B70051348A /* libcrypto.a */,
-				2B5E6057261356B70051348A /* PKIECP.h */,
 				2B5E6058261356B70051348A /* include */,
-				2B5E60A7261356B80051348A /* PKIECP.m */,
 				2B5E60A8261356B80051348A /* libssl.a */,
 			);
-			path = PKIECP;
+			path = libs;
 			sourceTree = "<group>";
 		};
 		2B5E6058261356B70051348A /* include */ = {
@@ -240,7 +235,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				2B5E6055261356B70051348A /* PKIECP */,
+				2B5E6055261356B70051348A /* libs */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				AC5CA6F0251E49D90082F112 /* Rnedskz.m */,
 				AC96A15B251E6EDF00540DFE /* Rnedskz.h */,
@@ -305,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5E60AA261356B80051348A /* Base64.c in Sources */,
-				2B5E60AB261356B80051348A /* PKIECP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,12 +425,12 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(PROJECT_DIR)/PKIECP/include",
+					"$(PROJECT_DIR)/libs/include",
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/PKIECP",
+					"$(PROJECT_DIR)/libs",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Rnedskz;
@@ -452,12 +446,12 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(PROJECT_DIR)/PKIECP/include",
+					"$(PROJECT_DIR)/libs/include",
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/PKIECP",
+					"$(PROJECT_DIR)/libs",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Rnedskz;
