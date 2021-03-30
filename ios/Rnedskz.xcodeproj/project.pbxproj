@@ -428,7 +428,7 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SDKROOT)/usr/include/libxml2",
-					"$(PROJECT_DIR)/libs/include",
+					"$(PROJECT_DIR)/libs",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,7 +449,7 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SDKROOT)/usr/include/libxml2",
-					"$(PROJECT_DIR)/libs/include",
+					"$(PROJECT_DIR)/libs",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
