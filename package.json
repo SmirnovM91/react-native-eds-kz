@@ -1,0 +1,46 @@
+{
+  "name": "react-native-eds-kz",
+  "title": "React Native Rnedskz",
+  "version": "1.0.0",
+  "description": "RN EDS",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "homepage": "https://github.com/SmirnovM91/react-native-eds-kz",
+  "files": [
+    "README.md",
+    "android",
+    "src",
+    "ios",
+    "react-native-eds-kz.podspec"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./lib/* && tsc",
+    "postversion": "sh ./post-version.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmirnovM91/react-native-eds-kz.git",
+    "baseUrl": "https://github.com/SmirnovM91/react-native-eds-kz"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "A|M Smirnov",
+    "email": "smirnov.m.n.91@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.63.0",
+    "react": "16.13.1",
+    "react-native": "^0.63.0",
+    "typescript": "^3.9.7"
+  }
+}
