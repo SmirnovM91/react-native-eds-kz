@@ -7,6 +7,10 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+<<<<<<< HEAD
+=======
+lib/
+>>>>>>> f5958c9198939be99c5e9b851069c80a36df23bd
 ios/PKIECP/*.a
 
 # Xcode
