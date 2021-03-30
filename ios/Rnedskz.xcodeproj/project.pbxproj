@@ -427,7 +427,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(PROJECT_DIR)/libs/include",
+					"$(PROJECT_DIR)/PKIECP/include",
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -448,7 +448,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(PROJECT_DIR)/libs/include",
+					"$(PROJECT_DIR)/PKIECP/include",
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				LIBRARY_SEARCH_PATHS = (
