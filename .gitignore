@@ -8,7 +8,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 lib/
-ios/PKIECP/*.a
+# ios/PKIECP/*.a
 
 # Xcode
 #
