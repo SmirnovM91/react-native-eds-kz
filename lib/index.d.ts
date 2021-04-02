@@ -14,13 +14,18 @@ export interface IEDSResponse {
     signedData: string;
     signedXML: string;
 }
-export declare const authPlainData: ({ path, password, data, }: {
+export declare function authPlainData({ path, password, data }: {
     path: any;
     password: any;
     data: any;
-}) => Promise<IEDSResponse>;
-export declare const signPlainData: ({ path, password, data, }: {
+}): Promise<IEDSResponse>;
+export declare function signPlainData({ path, password, data }: {
     path: any;
     password: any;
     data: any;
-}) => Promise<IEDSResponse>;
+}): Promise<IEDSResponse>;
+declare const RNEDS: {
+    signPlainData: typeof signPlainData;
+    authPlainData: typeof authPlainData;
+};
+export default RNEDS;

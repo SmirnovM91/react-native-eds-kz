@@ -53,6 +53,19 @@ android {
     lintOptions {
         abortOnError false
     }
+      packagingOptions {
+        pickFirst "lib/armeabi-v7a/libc++_shared.so"
+        pickFirst "lib/arm64-v8a/libc++_shared.so"
+        pickFirst "lib/x86/libc++_shared.so"
+        pickFirst "lib/x86_64/libc++_shared.so"
+    }
+    dependencies {
+        implementation files('libs/commons-logging-1.1.1.jar')
+        implementation files('libs/kalkancrypt_xmldsig-0.3.jar')
+        implementation files('libs/kalkancrypt-0.6.jar')
+        implementation files('libs/xmlsec-1.4.8.jar')
+        implementation 'org.bouncycastle:bcpkix-jdk15on:1.64'
+    }
 }
 
 repositories {

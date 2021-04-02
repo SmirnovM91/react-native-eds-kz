@@ -23,11 +23,10 @@ Pod::Spec.new do |s|
 
   s.dependency "React"
   # s.vendored_libraries = 'ios/libs/*.a'
-  s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => 'ios/libs/include' }
+  s.pod_target_xcconfig = { 
+    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../../node_modules/react-native-eds-kz/ios/libs/include"', 
+    'LIBRARY_SEARCH_PATHS' => '"${PODS_ROOT}/../../node_modules/react-native-eds-kz/ios/libs"' 
+  }
 
-
-
-  # ...
-  # s.dependency "..."
 end
 

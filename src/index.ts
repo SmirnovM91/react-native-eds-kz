@@ -26,25 +26,21 @@ const callback = (err, result: IEDSResponse, resolve, reject) => {
   resolve(result);
 };
 
-export const authPlainData = ({
-  path,
-  password,
-  data,
-}): Promise<IEDSResponse> => {
+export function authPlainData({ path, password, data }): Promise<IEDSResponse> {
   return new Promise((resolve, reject) => {
     Rnedskz.authPlainData(path, password, data, (err, result) =>
       callback(err, result, resolve, reject)
     );
   });
-};
-export const signPlainData = ({
-  path,
-  password,
-  data,
-}): Promise<IEDSResponse> => {
+}
+export function signPlainData({ path, password, data }): Promise<IEDSResponse> {
   return new Promise((resolve, reject) => {
     Rnedskz.signPlainData(path, password, data, (err, result) =>
       callback(err, result, resolve, reject)
     );
   });
-};
+}
+
+const RNEDS = { signPlainData, authPlainData };
+
+export default RNEDS;
