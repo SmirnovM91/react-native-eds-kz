@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
 import java.security.Principal;
 import java.security.PrivateKey;
@@ -45,6 +46,8 @@ import org.w3c.dom.NodeList;
 
 import android.net.Uri;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+import java.util.Base64;
 
 
 public class RnedskzModule extends ReactContextBaseJavaModule {
@@ -126,6 +129,21 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
                 throw new Exception("WRONGPASSWORDKEY");
             }
             boolean[] keyUsages = x509Certificate.getKeyUsage();
+            boolean digitalSignature = keyUsages[0];
+            boolean nonRepudiation = keyUsages[1];
+            boolean keyEncipherment = keyUsages[2];
+            
+            boolean isAuth = digitalSignature && keyEncipherment;
+            boolean isRsa = digitalSignature && nonRepudiation;
+
+            if (keyType == AUTH_KEY && isRsa){
+                throw new Exception("CERTIFICATE_NOT_FOR_AUTH");
+            } else if (keyType == RSA_KEY && isAuth){
+                throw new Exception("CERTIFICATE_NOT_FOR_SIGN");
+            } else if (!isRsa && !isAuth){
+                 throw new Exception("UNKNOWN_CERTIFICATE_TYPE");
+            }
+
             Principal principal = x509Certificate.getSubjectDN();
             WritableMap certData = new WritableNativeMap();
 
@@ -222,33 +240,10 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
                 sxml = os.toString();
                 dictionary.putString("signedXML", sxml);
             }
-
-
-//             и тут же его проверяем
-
-//            Element sigElement = null;
-//            Element rootEl = (Element) doc.getFirstChild();
-//
-//            NodeList list = rootEl.getElementsByTagName("ds:Signature");
-//            int length = list.getLength();
-//            for (int i = 0; i < length; i++) {
-//                Node sigNode = list.item(length - 1);
-//                sigElement = (Element) sigNode;
-//                if (sigElement == null) {
-//                    System.err.println("Bad signature: Element 'ds:Reference' is not found in XML document");
-//                }
-//                XMLSignature signature = new XMLSignature(sigElement, "");
-//                KeyInfo ki = signature.getKeyInfo();
-//                X509Certificate cert = ki.getX509Certificate();
-//                if (cert != null) {
-//                    boolean verified = signature.checkSignatureValue(cert);
-//
-//                    System.err.println((Boolean.toString(verified)));
-//                    // если несколько Signature, убираем каждый и последовательно проверяем
-//                    rootEl.removeChild(sigElement);
-//                }
-//            }
-
+        String certificate = Base64.getEncoder().encodeToString(x509Certificate.getEncoded());
+        dictionary.putString("signature", Base64.getEncoder().encodeToString(sxml.getBytes(StandardCharsets.UTF_8)));
+        dictionary.putString("signedData", signData);
+        dictionary.putString("certificate", certificate);
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
