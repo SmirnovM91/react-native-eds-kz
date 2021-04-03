@@ -14,7 +14,6 @@ interface IBaseResponse {
   };
   certExpireDate: string;
   certificate: string;
-  signature: string;
   signedData: string;
 }
 
@@ -24,7 +23,9 @@ export interface IEDSRequest {
   data: string;
 }
 
-export interface IEDSResponsePlain extends IBaseResponse {}
+export interface IEDSResponsePlain extends IBaseResponse {
+  signature: string;
+}
 
 export interface IEDSResponseXML extends IBaseResponse {
   signedXML: string;

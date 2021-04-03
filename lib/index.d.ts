@@ -10,34 +10,23 @@ interface IBaseResponse {
     };
     certExpireDate: string;
     certificate: string;
-    signature: string;
     signedData: string;
 }
+export interface IEDSRequest {
+    path: string;
+    password: string;
+    data: string;
+}
 export interface IEDSResponsePlain extends IBaseResponse {
+    signature: string;
 }
 export interface IEDSResponseXML extends IBaseResponse {
     signedXML: string;
 }
-export declare function authPlainData({ path, password, data, }: {
-    path: any;
-    password: any;
-    data: any;
-}): Promise<IEDSResponsePlain>;
-export declare function signPlainData({ path, password, data, }: {
-    path: any;
-    password: any;
-    data: any;
-}): Promise<IEDSResponsePlain>;
-export declare function authXMLData({ path, password, data, }: {
-    path: any;
-    password: any;
-    data: any;
-}): Promise<IEDSResponseXML>;
-export declare function signXMLData({ path, password, data, }: {
-    path: any;
-    password: any;
-    data: any;
-}): Promise<IEDSResponseXML>;
+export declare function authPlainData({ path, password, data, }: IEDSRequest): Promise<IEDSResponsePlain>;
+export declare function signPlainData({ path, password, data, }: IEDSRequest): Promise<IEDSResponsePlain>;
+export declare function authXMLData({ path, password, data, }: IEDSRequest): Promise<IEDSResponseXML>;
+export declare function signXMLData({ path, password, data, }: IEDSRequest): Promise<IEDSResponseXML>;
 declare const RNEDS: {
     signPlainData: typeof signPlainData;
     authPlainData: typeof authPlainData;
