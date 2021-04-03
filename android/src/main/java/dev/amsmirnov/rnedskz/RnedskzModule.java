@@ -22,6 +22,7 @@ import java.security.Security;
 import java.security.Signature;
 import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -45,7 +46,6 @@ import android.util.Base64;
 
 
 import android.net.Uri;
-
 
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -122,7 +122,7 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
     }
 
     private String sign(String data, PrivateKey privateKey, X509Certificate x509Certificate) throws Exception {
-        return Base64.encodeToString(sign(data.getBytes(StandardCharsets.UTF_8), privateKey, x509Certificate),android.util.Base64.DEFAULT);
+        return Base64.encodeToString(sign(data.getBytes(StandardCharsets.UTF_8), privateKey, x509Certificate), android.util.Base64.DEFAULT);
     }
 
     private byte[] sign(byte[] data, PrivateKey privateKey, X509Certificate x509Certificate) throws Exception {
@@ -146,6 +146,7 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
         checkTypeAndExpiration(credentialInfo, keyType);
 
         WritableMap dictionary = new WritableNativeMap();
+        writeBaseData(dictionary, credentialInfo);
         try {
             dictionary.putString("signedData", signData);
             writeBaseData(dictionary, credentialInfo);
@@ -240,7 +241,7 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
 
     public void writeBaseData(WritableMap dictionary, CredentialInfo credentialInfo) throws Exception {
         try {
-            String certificate = Base64.encodeToString(credentialInfo.x509Certificate.getEncoded(),android.util.Base64.DEFAULT);
+            String certificate = Base64.encodeToString(credentialInfo.x509Certificate.getEncoded(), android.util.Base64.DEFAULT);
             dictionary.putString("certificate", certificate);
             Principal principal = credentialInfo.x509Certificate.getSubjectDN();
             WritableMap certData = new WritableNativeMap();
@@ -275,6 +276,9 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
                         break;
                 }
             }
+            dictionary.putMap("certData", certData);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+            dictionary.putString("certExpireDate", dateFormat.format(credentialInfo.x509Certificate.getNotAfter()) + "Z");
         } catch (Exception e) {
             throw new Exception("CANNOT_SET_DATA");
         }
