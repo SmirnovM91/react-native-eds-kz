@@ -2,11 +2,11 @@
 
 ## Getting started
 
-`$ npm install https://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@github.com/SmirnovM91/react-native-eds-kz.git`
+`npm install https://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@github.com/SmirnovM91/react-native-eds-kz.git`
 
 ### iOS
 
-`$ cd ios && pod install && cd ..`
+`cd ios && pod install && cd ..`
 
 ## Usage
 
