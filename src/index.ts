@@ -77,6 +77,6 @@ export function signXMLData({
   });
 }
 
-const RNEDS = { signPlainData, authPlainData };
+const RNEDS = { signPlainData, authPlainData, signXMLData, authXMLData };
 
 export default RNEDS;

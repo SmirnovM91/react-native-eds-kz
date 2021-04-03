@@ -41,5 +41,7 @@ export declare function signXMLData({ path, password, data, }: {
 declare const RNEDS: {
     signPlainData: typeof signPlainData;
     authPlainData: typeof authPlainData;
+    signXMLData: typeof signXMLData;
+    authXMLData: typeof authXMLData;
 };
 export default RNEDS;
