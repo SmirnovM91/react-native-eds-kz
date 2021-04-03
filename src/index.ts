@@ -2,7 +2,7 @@ import { NativeModules } from "react-native";
 
 const { Rnedskz } = NativeModules;
 
-export interface IEDSResponse {
+interface IBaseResponse {
   certData: {
     commonName: string;
     countryName: string;
@@ -16,26 +16,62 @@ export interface IEDSResponse {
   certificate: string;
   signature: string;
   signedData: string;
+}
+
+export interface IEDSResponsePlain extends IBaseResponse {}
+
+export interface IEDSResponseXML extends IBaseResponse {
   signedXML: string;
 }
 
-const callback = (err, result: IEDSResponse, resolve, reject) => {
+const callback = (err, result: IEDSResponsePlain, resolve, reject) => {
   if (err) {
     return reject(err);
   }
   resolve(result);
 };
 
-export function authPlainData({ path, password, data }): Promise<IEDSResponse> {
+export function authPlainData({
+  path,
+  password,
+  data,
+}): Promise<IEDSResponsePlain> {
   return new Promise((resolve, reject) => {
     Rnedskz.authPlainData(path, password, data, (err, result) =>
       callback(err, result, resolve, reject)
     );
   });
 }
-export function signPlainData({ path, password, data }): Promise<IEDSResponse> {
+export function signPlainData({
+  path,
+  password,
+  data,
+}): Promise<IEDSResponsePlain> {
   return new Promise((resolve, reject) => {
     Rnedskz.signPlainData(path, password, data, (err, result) =>
+      callback(err, result, resolve, reject)
+    );
+  });
+}
+
+export function authXMLData({
+  path,
+  password,
+  data,
+}): Promise<IEDSResponseXML> {
+  return new Promise((resolve, reject) => {
+    Rnedskz.authXMLData(path, password, data, (err, result) =>
+      callback(err, result, resolve, reject)
+    );
+  });
+}
+export function signXMLData({
+  path,
+  password,
+  data,
+}): Promise<IEDSResponseXML> {
+  return new Promise((resolve, reject) => {
+    Rnedskz.signXMLData(path, password, data, (err, result) =>
       callback(err, result, resolve, reject)
     );
   });
