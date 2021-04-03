@@ -44,12 +44,12 @@ const path = "path/to/.p12";
 const PlainData = "Test123";
 const plain_request_data: IEDSRequest = { data, password, path };
 
-RNEDS.authXMLData(plain_request_data)
+RNEDS.signPlainData(plain_request_data)
   .then((result: IEDSResponsePlain) => {
     console.log(result);
   })
   .catch(console.log);
-RNEDS.signXMLData(plain_request_data)
+RNEDS.signPlainData(plain_request_data)
   .then((result: IEDSResponsePlain) => {
     console.log(result);
   })
