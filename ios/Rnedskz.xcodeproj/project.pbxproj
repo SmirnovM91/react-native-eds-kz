@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B0D45B42613A916001499DB /* Rnedskz.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CA6F0251E49D90082F112 /* Rnedskz.m */; };
-		2B5E60A9261356B80051348A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5E6056261356B70051348A /* libcrypto.a */; };
 		2B5E60AA261356B80051348A /* Base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B5E605A261356B70051348A /* Base64.c */; };
-		2B5E60AC261356B80051348A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5E60A8261356B80051348A /* libssl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -115,8 +113,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B5E60AC261356B80051348A /* libssl.a in Frameworks */,
-				2B5E60A9261356B80051348A /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

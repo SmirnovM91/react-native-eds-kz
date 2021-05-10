@@ -48,7 +48,7 @@ import android.util.Base64;
 import android.net.Uri;
 
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 
 
 public class RnedskzModule extends ReactContextBaseJavaModule {
@@ -128,8 +128,7 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
     private byte[] sign(byte[] data, PrivateKey privateKey, X509Certificate x509Certificate) throws Exception {
         KalkanProvider provider = new KalkanProvider();
         Security.addProvider(provider);
-        Provider p = new BouncyCastleProvider();
-        Security.addProvider(p);
+
         try {
             Signature signature = Signature.getInstance(x509Certificate.getSigAlgName(), provider);
             signature.initSign(privateKey);
@@ -288,8 +287,6 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
 
         Provider kal = new KalkanProvider();
         Security.addProvider(kal);
-        Provider p = new BouncyCastleProvider();
-        Security.addProvider(p);
         KncaXS.loadXMLSecurity();
         InputStream ksis;
         try {
@@ -301,7 +298,7 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
 
         char[] pwd = password.toCharArray();
 
-        KeyStore ks = KeyStore.getInstance("PKCS12", p.getName());
+        KeyStore ks = KeyStore.getInstance("PKCS12", kal.getName());
         try {
             ks.load(ksis, pwd);
         } catch (Exception e) {
