@@ -113,7 +113,7 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
         checkTypeAndExpiration(credentialInfo, keyType);
 
         WritableMap dictionary = new WritableNativeMap();
-        String signature = sign(data, credentialInfo.key, credentialInfo.x509Certificate);
+        String signature = sign(data, credentialInfo.key, credentialInfo.x509Certificate).replace("\n", "");;
         dictionary.putString("signature", signature);
         dictionary.putString("signedData", data);
         writeBaseData(dictionary, credentialInfo);
