@@ -240,7 +240,7 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
 
     public void writeBaseData(WritableMap dictionary, CredentialInfo credentialInfo) throws Exception {
         try {
-            String certificate = Base64.encodeToString(credentialInfo.x509Certificate.getEncoded(), android.util.Base64.DEFAULT);
+            String certificate = Base64.encodeToString(credentialInfo.x509Certificate.getEncoded(), android.util.Base64.DEFAULT).replace("\n", "");
             dictionary.putString("certificate", certificate);
             Principal principal = credentialInfo.x509Certificate.getSubjectDN();
             WritableMap certData = new WritableNativeMap();
