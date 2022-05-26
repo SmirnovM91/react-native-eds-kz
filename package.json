@@ -33,9 +33,9 @@
     "react-native": ">=0.60.0-rc.0 <1.0.x"
   },
   "devDependencies": {
-    "metro-react-native-babel-preset": "^0.63.0",
+    "metro-react-native-babel-preset": "^0.68.0",
     "react": "16.13.1",
-    "react-native": "^0.63.0",
+    "react-native": "^0.68.2",
     "typescript": "^3.9.7",
     "gh-release": "^5.0.0"
   }
