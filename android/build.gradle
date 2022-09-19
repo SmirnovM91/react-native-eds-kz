@@ -44,11 +44,9 @@ android {
     }
 
     dependencies {
-        implementation files('libs/commons-logging-1.1.1.jar')
-        implementation files('libs/kalkancrypt_xmldsig-0.3.jar')
-        implementation files('libs/kalkancrypt-0.6-patched.jar')
-        implementation files('libs/xmlsec-1.4.8.jar')
-        implementation files('libs/knca_provider_util-0.7.1.jar')
+        implementation files('libs/gost/kalkancrypt_xmldsig-osgi-0.4.jar')
+        implementation files('libs/gost/kalkancrypt-0.7.jar')
+        implementation files('libs/gost/knca_provider_util-0.8-SNAPSHOT.jar')
     }
 }
 

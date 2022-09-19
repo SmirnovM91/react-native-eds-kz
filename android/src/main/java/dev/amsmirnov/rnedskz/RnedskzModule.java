@@ -218,13 +218,14 @@ public class RnedskzModule extends ReactContextBaseJavaModule {
 
             boolean isAuth = digitalSignature && keyEncipherment;
             boolean isRsa = digitalSignature && nonRepudiation;
-
-            if (keyType == AUTH_KEY && isRsa) {
-                throw new Exception("CERTIFICATE_NOT_FOR_AUTH");
-            } else if (keyType == RSA_KEY && isAuth) {
-                throw new Exception("CERTIFICATE_NOT_FOR_SIGN");
-            } else if (!isRsa && !isAuth) {
-                throw new Exception("UNKNOWN_CERTIFICATE_TYPE");
+            if (!(isRsa && isAuth)) {
+                if (keyType == AUTH_KEY && isRsa) {
+                    throw new Exception("CERTIFICATE_NOT_FOR_AUTH");
+                } else if (keyType == RSA_KEY && isAuth) {
+                    throw new Exception("CERTIFICATE_NOT_FOR_SIGN");
+                } else if (!isRsa && !isAuth) {
+                    throw new Exception("UNKNOWN_CERTIFICATE_TYPE");
+                }
             }
         } catch (CertificateParsingException e) {
             throw new Exception("CERTIFICATE_PARSING_ERROR");
